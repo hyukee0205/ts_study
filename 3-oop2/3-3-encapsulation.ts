@@ -47,22 +47,24 @@
 
 
   class User {
-    private firstName: string;
-    private lastName: string;
     get fullName():string {
       return `${this.firstName} ${this.lastName}`;
     }
 
+    private internalAge = 4;
+    get age():number {
+      return this.internalAge;
+    }
+    set age(num: number) {
+      this.internalAge = num;
+    }
 
-    constructor(firstName: string, lastName:string) {
-      this.firstName = firstName;
-      this.lastName = lastName;
+    constructor(private firstName: string, private lastName:string) {
     }
   }
 
   const user = new User('Steve', 'Jobs');
-  console.log(user.fullName);
-  user.firstName = 'Ellie';
+  user.age = 6;
   console.log(user.fullName);
   
 }
